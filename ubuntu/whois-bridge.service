@@ -1,0 +1,8 @@
+[Unit]
+Description=whois bridge
+
+[Service]
+WorkingDirectory=%(install_root)s
+Environment=PYTHONUSERBASE=%(install_root)s PYTHONUNBUFFERED=true
+ExecStartPre=/bin/mkdir -p %(install_root)s/var/log
+ExecStart=%(install_root)s/bin/whois-bridge run
