@@ -1,8 +1,12 @@
 [Unit]
 Description=whois bridge
+After=network.target
 
 [Service]
 WorkingDirectory=%(install_root)s
 Environment=PYTHONUSERBASE=%(install_root)s PYTHONUNBUFFERED=true
 ExecStartPre=/bin/mkdir -p %(install_root)s/var/log
 ExecStart=%(install_root)s/bin/whois-bridge run
+
+[Install]
+WantedBy=multi-user.target

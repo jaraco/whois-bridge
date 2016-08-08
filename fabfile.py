@@ -28,6 +28,7 @@ def install_upstart_conf(install_root=install_root):
 	conf = gf("ubuntu/{proc_name}.service")
 	files.upload_template(conf, "/etc/systemd/system",
 		use_sudo=True, context=vars())
+	sudo(gf('systemctl enable {proc_name}'))
 
 @task
 def update(version=None):
